@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19" height="18.401" viewBox="0 0 19 18.401">
+  <g id="ic_notify" transform="translate(-1194 -32)">
+    <path id="Path_1565" data-name="Path 1565" d="M137.77,450.3a2.88,2.88,0,0,0,2.817-2.3h-5.634A2.88,2.88,0,0,0,137.77,450.3Zm0,0" transform="translate(1063.897 -399.899)" fill="#222431"/>
+    <path id="Path_1566" data-name="Path 1566" d="M13.475,11.114c-.02,0-.038,0-.058,0a6.123,6.123,0,0,1-4.983-9.7V.767A.767.767,0,0,0,6.9.767v.828A5.37,5.37,0,0,0,2.3,6.9V9.038A5.141,5.141,0,0,1,.469,12.973a1.342,1.342,0,0,0,.872,2.361h12.65a1.341,1.341,0,0,0,.865-2.367,5.144,5.144,0,0,1-1.382-1.853Zm0,0" transform="translate(1194 32)" fill="#222431"/>
+    <circle id="Ellipse_48" data-name="Ellipse 48" cx="5" cy="5" r="5" transform="translate(1203 32)" fill="#f35162"/>
+    <text id="_2" data-name="2" transform="translate(1208 39)" fill="#fff" font-size="6" font-family="Lato-Semibold, Lato" font-weight="600"><tspan x="-1" y="0">2</tspan></text>
+  </g>
+</svg>
