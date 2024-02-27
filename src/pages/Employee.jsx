@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function Employee() {
   return (
     <div className="p-5">
@@ -29,12 +28,6 @@ function Employee() {
                         className="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                       >
                         Contact Details
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                      >
-                        Joined on
                       </th>
                     </tr>
                   </thead>
@@ -66,10 +59,6 @@ function Employee() {
                       <td className="px-4 py-4 text-xs text-black whitespace-nowrap">
                         +91-986356790
                       </td>
-
-                      <td className="text-black px-6 py-4 text-sm">
-                        11-01-2020
-                      </td>
                     </tr>
                     <tr className="transition-al">
                       <td className="px-6  whitespace-nowrap">
@@ -100,16 +89,13 @@ function Employee() {
                       <td className="px-4 py-4 text-xs text-black whitespace-nowrap">
                         +91-986356790
                       </td>
-                      <td className="text-black px-6 py-4 text-sm">
-                        11-01-2020
-                      </td>
                     </tr>
                     <tr className="transition-all bg-gray-100">
                       <td className="px-6  whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 w-10 h-10">
                             <img
-                              className="w-10 h-10 rounded-full"
+                              className="w-10 h-10 rounded-full  object-cover"
                               src="https://media.istockphoto.com/id/167442618/photo/serious-man.jpg?s=612x612&w=0&k=20&c=kewPyjuzyS29cI8lkM_MYO-WJBtZr6joLd1977SPzhE="
                               alt=""
                             />
@@ -132,9 +118,6 @@ function Employee() {
 
                       <td className="px-4 py-4 text-xs text-black whitespace-nowrap">
                         +91-986356790
-                      </td>
-                      <td className="text-black px-6 py-4 text-sm">
-                        11-01-2020
                       </td>
                     </tr>
                     <tr className="transition-all bg-white">
@@ -163,9 +146,6 @@ function Employee() {
 
                       <td className="px-4 py-4 text-xs text-black whitespace-nowrap">
                         +91-986356790
-                      </td>
-                      <td className="text-black px-6 py-4 text-sm">
-                        11-01-2020
                       </td>
                     </tr>
                     <tr className="transition-all bg-gray-100">
@@ -197,9 +177,6 @@ function Employee() {
                       <td className="px-4 py-4 text-xs text-black whitespace-nowrap">
                         +91-986356790
                       </td>
-                      <td className="text-black px-6 py-4 text-sm">
-                        11-01-2020
-                      </td>
                     </tr>
                     <tr className="transition-all bg-white">
                       <td className="px-6  whitespace-nowrap">
@@ -227,9 +204,6 @@ function Employee() {
 
                       <td className="px-4 py-4 text-xs text-black whitespace-nowrap">
                         +91-986356790
-                      </td>
-                      <td className="text-black px-6 py-4 text-sm">
-                        11-01-2020
                       </td>
                     </tr>
                   </tbody>

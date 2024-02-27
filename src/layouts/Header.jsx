@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Switch from "../assets/Switch.png";
+import User from "../assets/User.png";
 
 export const links = [
   {
@@ -119,18 +121,55 @@ export const links = [
 ];
 
 function Header() {
+  const navigate = useNavigate();
+
+  // Phone Menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Profile Popover
+  const [popover, setPopover] = useState(true);
+  const togglePopover = () => setPopover((prev) => !prev);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
+  const popoverRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+        setPopover(false);
+      }
+    };
+    if (popover) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [popover]);
+
   return (
-    <header className="w-full font-bold text-sm px-5 py-2">
-      <div className="flex justify-between align-center">
-        <h1 className="font-bold text-black text-2xl">Employee's</h1>
-        <span className="block md:hidden" onClick={toggleMenu}>
-          Menu
-        </span>
+    <div class="flex items-center justify-between py-1 px-2">
+      <div className="flex items-center gap-x-2">
+        <button class="relative group block  md:hidden" onClick={toggleMenu}>
+          <div class="relative flex overflow-hidden items-center justify-center rounded-full w-9 h-9 transform transition-all bg-gray-300 ring-0  hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+            <div class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+              <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
+              <div class="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
+              <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
+            </div>
+          </div>
+        </button>
+        <span class="font-bold text-black text-2xl pl-1">Employee's</span>
       </div>
       <div
         className={`${
@@ -139,21 +178,74 @@ function Header() {
       >
         <MenuDrawer toggleMenu={toggleMenu} />
       </div>
-     
-    </header>
+
+      <div className="flex gap-x-2 items-center">
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold leading-none">Johnson</span>
+          <span className="text-xs font-normal leading-none">Designer</span>
+        </div>
+
+        <img
+          ref={buttonRef}
+          className="w-10 h-10 rounded-full object-cover border-yellow-300 border-solid border-4"
+          onClick={togglePopover}
+          src="https://media.istockphoto.com/id/1248770730/photo/serious-authoritative-man-with-folded-arms.jpg?s=612x612&w=0&k=20&c=L308VknCjSP03Jusb3HnBao2qpjH3faWRPRqt5IB3XE="
+          alt=""
+        />
+        {popover && (
+          <div
+            ref={popoverRef}
+            data-popover="popover"
+            class="absolute top-12 right-5 font-sans text-sm font-normal break-words whitespace-normal bg-white border rounded-lg shadow-lg w-max border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none"
+          >
+            <ul className="flex flex-col p-1">
+              <div className="flex hover:bg-gray-100 px-2 rounded-md py-1">
+                <img src={User} className="w-5 h-5 object-cover"></img>
+
+                <li className="px-2  hover:bg-gray-100 rounded-md text-gray-800 font-semibold transition duration-300 ease-in-out">
+                  <Link to="/profile">Profile</Link>
+                </li>
+              </div>
+
+              <div className="flex hover:bg-gray-100 px-2 rounded-md py-1">
+                <img src={Switch} className="object-cover w-5  h-5"></img>
+                <li
+                  onClick={handleLogout}
+                  className="px-2  rounded-md text-gray-800 font-semibold transition
+              duration-300 ease-in-out "
+                >
+                  Logout
+                </li>
+              </div>
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 export default Header;
 
 const MenuDrawer = ({ toggleMenu }) => {
   return (
-    <div className="bg-slate-700 w-full py-6 px-4 absolute top-0 left-0">
-      <span
+    <div className="bg-slate-700 w-full p-4 pb-6 absolute top-0 left-0">
+      <svg
         onClick={toggleMenu}
-        className="flex justify-end text-white mr-3 mb-2"
+        class="h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="#FFFFFF
+        "
+        aria-hidden="true"
       >
-        close
-      </span>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
       <ul className="flex flex-col gap-2 font-medium">
         {links.map((item) => {
           return (
