@@ -9,6 +9,10 @@ const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("token") ? true : false;
   return isAuthenticated ? children : <Navigate to="/" />;
 };
+/*const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = sessionStorage.getItem("token") ? true : false;
+  return isAuthenticated ? children : <Navigate to="/" />;
+};*/
 
 function Router() {
   return (

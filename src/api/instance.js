@@ -1,9 +1,15 @@
 import axios from "axios";
-
+const getToken = () => {
+  const token = localStorage.getItem("token")
+    ? localStorage.getItem("token")
+    : "";
+  return token;
+};
 const instance = axios.create({
-  baseURL: "http://admin.mypack.fit/api",
+  baseURL: "https://hrms.bcodercastle.com/api",
   headers: {
     "Content-Type": "application/json",
+    "x-access-token": getToken(),
   },
 });
 export default instance;

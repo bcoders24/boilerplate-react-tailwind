@@ -8,35 +8,41 @@ import { useNavigate, Navigate } from "react-router";
 
 function Login() {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  if (localStorage.getItem("token")) return <Navigate to="/dashboard"/>;
+  if (localStorage.getItem("token")) return <Navigate to="/dashboard" />;
 
+  //show and hide password
   const toggleShowPassword = () => {
     setShowPassword((prev) => !prev);
   };
+
+  // Store the token in local Storage
 
   const handleLogin = async () => {
     const body = {
       username: email,
       password,
-      deviceType: "web",
-      deviceId: "string",
-      authMethod: "email",
-      verificationType: "password",
     };
     setIsLoading(true);
-    const response = await instance.post("/auths/login", body);
-    if (response?.data?.isSuccess) {
-      localStorage.setItem("token",response?.data?.accessToken);
-      toast.success("login success");
-      navigate("/dashboard");
-      setIsLoading(false);
-    } else {
-      toast.error(response?.data?.message);
+    try {
+      const response = await instance.post("/users/signin", body);
+      if (response?.data?.isSuccess) {
+        toast.success("Login successful");
+        console.log(response?.data);
+        localStorage.setItem("token", response?.data?.data?.session?.token);
+        navigate("/dashboard");
+        setIsLoading(false);
+      } else {
+        toast.error(response?.data?.message);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      toast.error(error?.message);
       setIsLoading(false);
     }
   };
@@ -157,29 +163,31 @@ function Login() {
                 disabled={isLoading} // Disable button when loading
               >
                 {isLoading && (
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5 mr-3 text-white animate-spin"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V2.5"
-                      ></path>
-                    </svg>
-                    Logging in...
-                  </span>
+                  <div className="py-3">
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 mr-3 text-white animate-spin"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V2.5"
+                        ></path>
+                      </svg>
+                      Logging in...
+                    </span>
+                  </div>
                 )}
                 {!isLoading && "Login"}
               </button>

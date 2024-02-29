@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Switch from "../assets/Switch.png";
 import User from "../assets/User.png";
@@ -133,12 +133,19 @@ function Header() {
   const [popover, setPopover] = useState(true);
   const togglePopover = () => setPopover((prev) => !prev);
 
+  //remove token
+  /*const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };*/
+  //remove token
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
 
-  const popoverRef = useRef(null);
+  /*const popoverRef = useRef(null);
   const buttonRef = useRef(null);
 
   useEffect(() => {
@@ -155,21 +162,24 @@ function Header() {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [popover]);
+  }, [popover]);*/
 
   return (
-    <div class="flex items-center justify-between py-1 px-2">
+    <div className="flex items-center justify-between py-1 px-2">
       <div className="flex items-center gap-x-2">
-        <button class="relative group block  md:hidden" onClick={toggleMenu}>
-          <div class="relative flex overflow-hidden items-center justify-center rounded-full w-9 h-9 transform transition-all bg-gray-300 ring-0  hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-            <div class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-              <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
-              <div class="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
-              <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
+        <button
+          className="relative group block  md:hidden"
+          onClick={toggleMenu}
+        >
+          <div className="relative flex overflow-hidden items-center justify-center rounded-full w-9 h-9 transform transition-all bg-gray-300 ring-0  hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+            <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+              <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
+              <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
+              <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
             </div>
           </div>
         </button>
-        <span class="font-bold text-black text-2xl pl-1">Employee's</span>
+        <span className="font-bold text-black text-2xl pl-1">Employee's</span>
       </div>
       <div
         className={`${
@@ -180,13 +190,62 @@ function Header() {
       </div>
 
       <div className="flex gap-x-2 items-center">
-        <div className="flex flex-col">
-          <span className="text-sm font-semibold leading-none">Johnson</span>
-          <span className="text-xs font-normal leading-none">Designer</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="19"
+          height="18.401"
+          viewBox="0 0 19 18.401"
+        >
+          <g id="ic_notify" transform="translate(-1194 -32)">
+            <path
+              id="Path_1565"
+              data-name="Path 1565"
+              d="M137.77,450.3a2.88,2.88,0,0,0,2.817-2.3h-5.634A2.88,2.88,0,0,0,137.77,450.3Zm0,0"
+              transform="translate(1063.897 -399.899)"
+              fill="#222431"
+            />
+            <path
+              id="Path_1566"
+              data-name="Path 1566"
+              d="M13.475,11.114c-.02,0-.038,0-.058,0a6.123,6.123,0,0,1-4.983-9.7V.767A.767.767,0,0,0,6.9.767v.828A5.37,5.37,0,0,0,2.3,6.9V9.038A5.141,5.141,0,0,1,.469,12.973a1.342,1.342,0,0,0,.872,2.361h12.65a1.341,1.341,0,0,0,.865-2.367,5.144,5.144,0,0,1-1.382-1.853Zm0,0"
+              transform="translate(1194 32)"
+              fill="#222431"
+            />
+            <circle
+              id="Ellipse_48"
+              data-name="Ellipse 48"
+              cx="5"
+              cy="5"
+              r="5"
+              transform="translate(1203 32)"
+              fill="#f35162"
+            />
+            <text
+              id="_2"
+              data-name="2"
+              transform="translate(1208 39)"
+              fill="#fff"
+              fontSize="6"
+              fontFamily="Lato-Semibold, Lato"
+              fontWeight="600"
+            >
+              <tspan x="-1" y="0">
+                2
+              </tspan>
+            </text>
+          </g>
+        </svg>
+        <div className="flex flex-col divide-x-2 divide-orange-500">
+          <span className="text-sm font-semibold leading-none pl-1">
+            Johnson
+          </span>
+          <span className="text-xs font-normal leading-none pl-1">
+            Designer
+          </span>
         </div>
 
         <img
-          ref={buttonRef}
+          //ref={buttonRef}
           className="w-10 h-10 rounded-full object-cover border-yellow-300 border-solid border-4"
           onClick={togglePopover}
           src="https://media.istockphoto.com/id/1248770730/photo/serious-authoritative-man-with-folded-arms.jpg?s=612x612&w=0&k=20&c=L308VknCjSP03Jusb3HnBao2qpjH3faWRPRqt5IB3XE="
@@ -194,9 +253,9 @@ function Header() {
         />
         {popover && (
           <div
-            ref={popoverRef}
+            //ref={popoverRef}
             data-popover="popover"
-            class="absolute top-12 right-5 font-sans text-sm font-normal break-words whitespace-normal bg-white border rounded-lg shadow-lg w-max border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none"
+            className="absolute top-12 right-5 font-sans text-sm font-normal break-words whitespace-normal bg-white border rounded-lg shadow-lg w-max border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none"
           >
             <ul className="flex flex-col p-1">
               <div className="flex hover:bg-gray-100 px-2 rounded-md py-1">
@@ -231,7 +290,7 @@ const MenuDrawer = ({ toggleMenu }) => {
     <div className="bg-slate-700 w-full p-4 pb-6 absolute top-0 left-0">
       <svg
         onClick={toggleMenu}
-        class="h-6 w-6"
+        className="h-6 w-6"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
