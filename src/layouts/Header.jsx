@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Switch from "../assets/Switch.png";
 import User from "../assets/User.png";
+import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 
 export const links = [
   {
@@ -12,8 +13,7 @@ export const links = [
       <svg
         id="ic_dashboard_selected"
         xmlns="http://www.w3.org/2000/svg"
-        width="12.752"
-        height="12.752"
+        className="w-4 h-4"
         viewBox="0 0 12.752 12.752"
       >
         <path
@@ -129,43 +129,13 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Profile Popover
-  const [popover, setPopover] = useState(true);
-  const togglePopover = () => setPopover((prev) => !prev);
-
-  //remove token
-  /*const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };*/
-  //remove token
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
 
-  /*const popoverRef = useRef(null);
-  const buttonRef = useRef(null);
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-        setPopover(false);
-      }
-    };
-    if (popover) {
-      document.addEventListener("mousedown", handleOutsideClick);
-    } else {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [popover]);*/
-
   return (
-    <div className="flex items-center justify-between py-1 px-2">
+    <div className="flex items-center justify-between py-4 px-2">
       <div className="flex items-center gap-x-2">
         <button
           className="relative group block  md:hidden"
@@ -244,41 +214,41 @@ function Header() {
           </span>
         </div>
 
-        <img
-          //ref={buttonRef}
-          className="w-10 h-10 rounded-full object-cover border-yellow-300 border-solid border-4"
-          onClick={togglePopover}
-          src="https://media.istockphoto.com/id/1248770730/photo/serious-authoritative-man-with-folded-arms.jpg?s=612x612&w=0&k=20&c=L308VknCjSP03Jusb3HnBao2qpjH3faWRPRqt5IB3XE="
-          alt=""
-        />
-        {popover && (
-          <div
-            //ref={popoverRef}
-            data-popover="popover"
-            className="absolute top-12 right-5 font-sans text-sm font-normal break-words whitespace-normal bg-white border rounded-lg shadow-lg w-max border-blue-gray-50 text-blue-gray-500 shadow-blue-gray-500/10 focus:outline-none"
-          >
-            <ul className="flex flex-col p-1">
-              <div className="flex hover:bg-gray-100 px-2 rounded-md py-1">
-                <img src={User} className="w-5 h-5 object-cover"></img>
+        <Menu
+          menuButton={
+            <MenuButton>
+              <img
+                className="w-10 h-10 rounded-full object-cover border-yellow-300 border-solid border-4"
+                src="https://media.istockphoto.com/id/1248770730/photo/serious-authoritative-man-with-folded-arms.jpg?s=612x612&w=0&k=20&c=L308VknCjSP03Jusb3HnBao2qpjH3faWRPRqt5IB3XE="
+                alt=""
+              />
+            </MenuButton>
+          }
+          transition
+        >
+          <ul className="flex flex-col p-2 ">
+            <div className="flex hover:bg-gray-100 pl-2 rounded-md py-1">
+              <img src={User} className="w-5 h-5 object-cover"></img>
 
-                <li className="px-2  hover:bg-gray-100 rounded-md text-gray-800 font-semibold transition duration-300 ease-in-out">
-                  <Link to="/profile">Profile</Link>
-                </li>
-              </div>
+              <li className="px-2  hover:bg-gray-100 rounded-md text-gray-800 font-semibold transition duration-300 ease-in-out">
+                <Link to="/profile">Profile</Link>
+              </li>
+            </div>
 
-              <div className="flex hover:bg-gray-100 px-2 rounded-md py-1">
-                <img src={Switch} className="object-cover w-5  h-5"></img>
-                <li
-                  onClick={handleLogout}
-                  className="px-2  rounded-md text-gray-800 font-semibold transition
+            <div
+              className="flex hover:bg-gray-100 px-2 rounded-md py-1"
+              onClick={handleLogout}
+            >
+              <img src={Switch} className="object-cover w-5 h-5"></img>
+              <li
+                className="px-2  rounded-md text-gray-800 font-semibold transition
               duration-300 ease-in-out "
-                >
-                  Logout
-                </li>
-              </div>
-            </ul>
-          </div>
-        )}
+              >
+                Logout
+              </li>
+            </div>
+          </ul>
+        </Menu>
       </div>
     </div>
   );

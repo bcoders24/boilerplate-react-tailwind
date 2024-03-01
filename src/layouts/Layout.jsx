@@ -5,9 +5,9 @@ import Header from "./Header";
 function Layout({ children }) {
   return (
     <div className="h-full w-full flex">
-      <Sidebar />
+      <Sidebar/>
       <div className="w-full h-full flex flex-col">
-        <Header />
+        <Header/>
         {children}
       </div>
     </div>

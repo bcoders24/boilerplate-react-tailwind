@@ -8,7 +8,6 @@ import { useNavigate, Navigate } from "react-router";
 
 function Login() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
@@ -22,8 +21,12 @@ function Login() {
   };
 
   // Store the token in local Storage
-
   const handleLogin = async () => {
+    if (!email || !password) {
+      // Display error message if either email or password is empty
+      toast.error("Please fill in both password and email fields.");
+      return;
+    }
     const body = {
       username: email,
       password,
@@ -36,13 +39,12 @@ function Login() {
         console.log(response?.data);
         localStorage.setItem("token", response?.data?.data?.session?.token);
         navigate("/dashboard");
-        setIsLoading(false);
       } else {
         toast.error(response?.data?.message);
-        setIsLoading(false);
       }
     } catch (error) {
       toast.error(error?.message);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -80,17 +82,18 @@ function Login() {
                     />
                   </svg>
                 </div>
-                <div className="items-center ">
+                <div className="w-full">
                   <input
-                    className="h-full w-full  pl-2 bg-transparent  font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200  focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    required
+                    className="pl-2 w-full bg-transparent font-sans text-sm  text-blue-gray-700 outline outline-0  focus:outline-0"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
               <div className="py-7">
-                <label className="text-sm text-gray-400">Password</label>
+                <label className="text-sm text-gray-400 select-none">
+                  Password
+                </label>
                 <div className="relative border-b-2 border-amber-500">
                   <div className="absolute top-0  flex items-center">
                     <svg
@@ -108,15 +111,14 @@ function Login() {
                       />
                     </svg>
                   </div>
-                  <div className="items-center">
+                  <div className="w-full flex">
                     <input
                       name="email"
                       type={showPassword ? "text" : "password"}
-                      className="text-sm pl-5  bg-transparent border-none font-normal font-sans text-black focus:outline-none"
+                      className="text-sm pl-5 w-full bg-transparent border-none font-normal font-sans text-black focus:outline-none"
                       placeholder="Enter your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      required
                     />
                     <div className="float-end" onClick={toggleShowPassword}>
                       {showPassword ? (
@@ -151,49 +153,31 @@ function Login() {
                   </div>
                 </div>
                 <div className="float-end py-2">
-                  <p className="text-gray-400 text-sm">Forgot Password?</p>
+                  <p className="text-gray-400 text-sm select-none">
+                    Forgot Password?
+                  </p>
                 </div>
               </div>
             </form>
-            <div className="flex justify-center">
+            <div className="flex justify-center select-none">
               <button
                 type="button"
-                className="relative text-white bg-gradient-to-br px-16 py-2.5 from-amber-400 to-amber-500 focus:ring-2 font-bold font-Poppins rounded-lg text-sm text-center"
+                className="text-white bg-gradient-to-br w-40 py-2.5 from-amber-400 to-amber-500 focus:ring-2 font-bold font-Poppins rounded-lg text-sm text-center"
                 onClick={handleLogin}
                 disabled={isLoading} // Disable button when loading
               >
-                {isLoading && (
-                  <div className="py-3">
-                    <span className="absolute inset-0 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 mr-3 text-white animate-spin"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V2.5"
-                        ></path>
-                      </svg>
-                      Logging in...
-                    </span>
+                {isLoading ? (
+                  <div className="flex items-center justify-center text-white">
+                    <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-3"></span>
+                    Logging in...
                   </div>
+                ) : (
+                  "Login"
                 )}
-                {!isLoading && "Login"}
               </button>
             </div>
             <div className="mt-10">
-              <p className="text-gray-500 text-xs text-center">
+              <p className="text-gray-500 text-xs text-center select-none">
                 Powered by BTeams
               </p>
             </div>

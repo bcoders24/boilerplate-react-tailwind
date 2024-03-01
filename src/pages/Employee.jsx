@@ -13,16 +13,16 @@ function Employee() {
   }, []);
   return (
     <div className="p-5">
-      <div className="bg-gray-300 rounded-t-xl">
+      <div className="bg-gray-200 rounded-t-xl">
         <div className="flex items-center justify-between py-4 px-2">
           <input
             type="text"
             placeholder="Search..."
-            className="px-3 lg:w-64 w-36 py-2 text-sm border shadow-md  rounded-md focus:outline-none "
+            className="px-3 lg:w-64 w-32 py-2 text-sm border shadow-md  rounded-xl focus:outline-none "
           />
           <button
             type="button"
-            className="text-white bg-amber-400 py-2 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 me-2 "
+            className="text-white bg-gradient-to-r py-2 bg-orange-300  to-orange-200 hover:bg-gradient-to-bl  font-medium rounded-full me-2 text-sm px-3 text-center "
           >
             + Add Employee
           </button>
@@ -36,25 +36,25 @@ function Employee() {
                     <tr>
                       <th
                         scope="col"
-                        className="px-8 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        className="px-8 py-3 text-xs font-normal  tracking-wider text-left text-gray-500"
                       >
                         Details
                       </th>
                       <th
                         scope="col"
-                        className="px-2 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        className="px-2 py-3 text-xs font-normal  tracking-wider text-left text-gray-500"
                       >
                         Designation
                       </th>
                       <th
                         scope="col"
-                        className="px-4 py-3 text-xs font-medium tracking-wider leading-none text-left text-gray-500 uppercase"
+                        className="px-4 py-3 text-xs font-normal  tracking-wider leading-none text-left text-gray-500"
                       >
                         Contact Details
                       </th>
                       <th
                         scope="col"
-                        className="px-4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                        className="px-4 py-3 text-xs font-normal tracking-wider text-left text-gray-500"
                       >
                         Joined on
                       </th>
