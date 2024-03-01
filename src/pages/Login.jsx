@@ -94,7 +94,7 @@ function Login() {
                 <label className="text-sm text-gray-400 select-none">
                   Password
                 </label>
-                <div className="relative border-b-2 border-amber-500">
+                <div className="relative border-b-2 border-gray-400">
                   <div className="absolute top-0  flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +153,7 @@ function Login() {
                   </div>
                 </div>
                 <div className="float-end py-2">
-                  <p className="text-gray-400 text-sm select-none">
+                  <p className="text-gray-400 text-xs select-none">
                     Forgot Password?
                   </p>
                 </div>
@@ -162,7 +162,7 @@ function Login() {
             <div className="flex justify-center select-none">
               <button
                 type="button"
-                className="text-white bg-gradient-to-br w-40 py-2.5 from-amber-400 to-amber-500 focus:ring-2 font-bold font-Poppins rounded-lg text-sm text-center"
+                className="text-white bg-gradient-to-br w-40 py-2.5 from-orange-300 to-amber-500 focus:ring-2 font-bold font-Poppins rounded-lg text-sm text-center"
                 onClick={handleLogin}
                 disabled={isLoading} // Disable button when loading
               >

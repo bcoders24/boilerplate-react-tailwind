@@ -43,7 +43,7 @@ function Sidebar() {
                 />
               )}
             </div>
-            <ul className="w-full flex flex-col gap-y-5 font-medium mt-10">
+            <ul className="w-full flex flex-col gap-y-5 mt-10">
               {links.map((item) => {
                 return (
                   <li

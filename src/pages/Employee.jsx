@@ -22,7 +22,7 @@ function Employee() {
           />
           <button
             type="button"
-            className="text-white bg-gradient-to-r py-2 bg-orange-300  to-orange-200 hover:bg-gradient-to-bl  font-medium rounded-full me-2 text-sm px-3 text-center "
+            className="text-white bg-gradient-to-r py-2 from-orange-300 to-amber-500  font-medium rounded-md me-2 text-sm px-3 text-center "
           >
             + Add Employee
           </button>
