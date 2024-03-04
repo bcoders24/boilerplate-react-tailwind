@@ -3,8 +3,11 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Layout from "./layouts/Layout.jsx";
 import Home from "./pages/Home.jsx";
-import Employee from "./pages/Employee.jsx";
-
+import Employee from "./pages/Employee/Employee.jsx";
+import AddEmployee from "./pages/Employee/AddEmployee.jsx";
+import Timeline from "./pages/Timeline.jsx";
+import Leaves from "./pages/Leaves.jsx";
+import Rating from "./pages/Rating.jsx";
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("token") ? true : false;
   return isAuthenticated ? children : <Navigate to="/" />;
@@ -41,11 +44,21 @@ function Router() {
           }
         />
         <Route
+          path="/employee/add"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <AddEmployee />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/timeline"
           element={
             <ProtectedRoute>
               <Layout>
-                <h1>Timeline</h1>
+                <Timeline />
               </Layout>
             </ProtectedRoute>
           }
@@ -55,7 +68,17 @@ function Router() {
           element={
             <ProtectedRoute>
               <Layout>
-                <h1>Leaves</h1>
+                <Leaves />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/rating"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Rating />
               </Layout>
             </ProtectedRoute>
           }

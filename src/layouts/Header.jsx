@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Switch from "../assets/Switch.png";
 import User from "../assets/User.png";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
+import BackArrow from "../assets/icons/BackArrow";
 
 export const links = [
   {
@@ -120,8 +121,10 @@ export const links = [
   },
 ];
 
-function Header() {
+function Header({ title }) {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const hasMoreThanOneSlash = pathname.split("/").length > 2;
 
   // Phone Menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -149,7 +152,12 @@ function Header() {
             </div>
           </div>
         </button>
-        <span className="font-bold text-black text-2xl pl-1">Employee's</span>
+        {hasMoreThanOneSlash && (
+          <button className="ml-4" onClick={() => navigate(-1)}>
+            <BackArrow />
+          </button>
+        )}
+        <span className="font-bold text-black text-2xl pl-1">{title}</span>
       </div>
       <div
         className={`${

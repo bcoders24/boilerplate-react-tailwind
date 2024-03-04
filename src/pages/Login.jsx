@@ -162,7 +162,7 @@ function Login() {
             <div className="flex justify-center select-none">
               <button
                 type="button"
-                className="text-white bg-gradient-to-br w-40 py-2.5 from-orange-300 to-amber-500 focus:ring-2 font-bold font-Poppins rounded-lg text-sm text-center"
+                className="text-white bg-gradient-to-br w-40 py-2.5 from-orange-300 to-amber-500 focus:ring-2 font-bold font-Poppins rounded-md text-sm text-center"
                 onClick={handleLogin}
                 disabled={isLoading} // Disable button when loading
               >
@@ -176,7 +176,7 @@ function Login() {
                 )}
               </button>
             </div>
-            <div className="mt-10">
+            <div className="pt-12">
               <p className="text-gray-500 text-xs text-center select-none">
                 Powered by BTeams
               </p>
