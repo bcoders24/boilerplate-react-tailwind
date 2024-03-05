@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { links } from "./Header";
-
+import bCoderLogo from "../assets/bCoderLogo.png";
 function Sidebar() {
   const [expanded, setExpanded] = useState(true);
 
@@ -38,7 +38,7 @@ function Sidebar() {
             <div className="h-12">
               {expanded && (
                 <img
-                  src="src/assets/icon.png"
+                  src={bCoderLogo}
                   className="object-over md:ml-6 lg:ml-6"
                 />
               )}

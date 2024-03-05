@@ -10,3 +10,8 @@ body {
     font-family: 'Poppins';
     background-color: #FFFDF9;
 }
+
+.error {
+   
+    @apply text-xs font-normal text-rose-400 leading-none;
+}
