@@ -1,9 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../../api/instance";
-import Header from "./../../layouts/Header";
+import Header from "../../layouts/Header";
+import { toast } from "react-toastify";
 
-function Employee() {
+function EmployeeList() {
   //Hooks
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -15,11 +16,10 @@ function Employee() {
     const GetUsers = async () => {
       try {
         const response = await instance.get("/users");
-        console.log(response?.data?.items);
         setUsers(response?.data?.items);
         setLoading(false);
       } catch (error) {
-        console.log("error", message);
+        toast.error(error.message);
         setLoading(false);
       }
     };
@@ -37,8 +37,8 @@ function Employee() {
     <Fragment>
       <Header title="Employee's" />
 
-      <div className="p-5 ">
-        <div className="bg-gray-200 rounded-t-xl h-full">
+      <div className="p-5 h-[calc(100%-72px)]">
+        <div className="bg-gray-200 rounded-t-xl h-full ">
           <div className="flex items-center justify-between py-4 px-2">
             <input
               type="text"
@@ -56,14 +56,14 @@ function Employee() {
             </button>
           </div>
           {loading ? (
-            <div className="flex justify-center items-center h-40">
+            <div className="flex justify-center items-center h-60">
               Loading...
             </div>
           ) : (
             <div className="flex flex-col">
-              <div className="overflow-x-auto ">
+              <div className="overflow-x-auto">
                 <div className="inline-block min-w-full align-middle">
-                  <div className="overflow-hidden bg-white rounded-t-xl">
+                  <div className="overflow-hidden bg-white rounded-t-xl ">
                     <table className="min-w-full overflow-x-scroll divide-y divide-gray-200">
                       <thead className="text-xs">
                         <tr>
@@ -133,4 +133,4 @@ function Employee() {
   );
 }
 
-export default Employee;
+export default EmployeeList;

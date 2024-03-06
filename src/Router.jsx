@@ -3,19 +3,16 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login.jsx";
 import Layout from "./layouts/Layout.jsx";
 import Home from "./pages/Home.jsx";
-import Employee from "./pages/Employee/Employee.jsx";
-import AddEmployee from "./pages/Employee/AddEmployee.jsx";
+import EmployeeList from "./pages/Employee/EmployeeList.jsx";
 import Timeline from "./pages/Timeline.jsx";
 import Leaves from "./pages/Leaves.jsx";
 import Rating from "./pages/Rating.jsx";
+import AddEmployeeForm from "./pages/Employee/AddEmployeeForm.jsx";
+
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("token") ? true : false;
   return isAuthenticated ? children : <Navigate to="/" />;
 };
-/*const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = sessionStorage.getItem("token") ? true : false;
-  return isAuthenticated ? children : <Navigate to="/" />;
-};*/
 
 function Router() {
   return (
@@ -38,7 +35,7 @@ function Router() {
           element={
             <ProtectedRoute>
               <Layout>
-                <Employee />
+                <EmployeeList />
               </Layout>
             </ProtectedRoute>
           }
@@ -48,7 +45,7 @@ function Router() {
           element={
             <ProtectedRoute>
               <Layout>
-                <AddEmployee />
+                <AddEmployeeForm />
               </Layout>
             </ProtectedRoute>
           }

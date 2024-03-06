@@ -17,6 +17,7 @@
     "react-datepicker": "^6.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
+    "react-stepper-horizontal": "^1.0.11",
     "react-toastify": "^10.0.4",
     "recharts": "^2.12.0",
     "tailwind-datepicker-react": "^1.4.3",
