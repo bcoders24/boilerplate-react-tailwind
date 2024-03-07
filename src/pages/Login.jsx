@@ -8,24 +8,23 @@ import { useNavigate, Navigate } from "react-router";
 
 function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
-  if (localStorage.getItem("token")) return <Navigate to="/dashboard" />;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   //show and hide password
   const toggleShowPassword = () => {
     setShowPassword((prev) => !prev);
   };
 
-  // Store the token in local Storage
+  //token get
+  if (localStorage.getItem("token")) return <Navigate to="/dashboard" />;
+
+  //Api
   const handleLogin = async () => {
     if (!email || !password) {
-      // Display error message if either email or password is empty
-      toast.error("Please fill in both password and email fields.");
-      return;
+      toast.error("please file in both password and email fields");
     }
     const body = {
       username: email,
@@ -36,7 +35,6 @@ function Login() {
       const response = await instance.post("/users/signin", body);
       if (response?.data?.isSuccess) {
         toast.success("Login successful");
-        console.log(response?.data);
         localStorage.setItem("token", response?.data?.data?.session?.token);
         navigate("/dashboard");
       } else {
@@ -86,6 +84,7 @@ function Login() {
                   <input
                     placeholder="Enter your email"
                     className="pl-2 w-full bg-transparent font-sans text-sm  text-blue-gray-700 outline outline-0  focus:outline-0"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>

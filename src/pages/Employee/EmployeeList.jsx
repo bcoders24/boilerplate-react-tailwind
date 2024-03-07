@@ -9,7 +9,7 @@ function EmployeeList() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [loading, setLoading] = useState(true); // State for loading indicator
+  const [loading, setLoading] = useState(true);
 
   //Api
   useEffect(() => {
@@ -20,7 +20,6 @@ function EmployeeList() {
         setLoading(false);
       } catch (error) {
         toast.error(error.message);
-        setLoading(false);
       }
     };
     GetUsers();
@@ -56,8 +55,8 @@ function EmployeeList() {
             </button>
           </div>
           {loading ? (
-            <div className="flex justify-center items-center h-60">
-              Loading...
+            <div className="flex justify-center items-center">
+              <div className="w-16 h-16 border-t-2 border-gray-400 rounded-full animate-spin"></div>
             </div>
           ) : (
             <div className="flex flex-col">

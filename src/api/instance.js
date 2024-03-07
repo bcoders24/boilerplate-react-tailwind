@@ -1,10 +1,12 @@
 import axios from "axios";
+
 const getToken = () => {
   const token = localStorage.getItem("token")
     ? localStorage.getItem("token")
     : "";
   return token;
 };
+
 const instance = axios.create({
   baseURL: "https://hrms.bcodercastle.com/api",
   headers: {

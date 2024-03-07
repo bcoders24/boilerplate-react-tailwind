@@ -72,12 +72,12 @@ function StepOne({ setFormData }) {
   };
 
   return (
-    <div className="h-full">
-      <div className="flex justify-center sm:h-auto md:h-full items-center">
+    <div className="p-2 h-full">
+      <div className="flex lg:justify-center  sm:h-auto md:h-full lg:items-center">
         <div className="p-1">
           <img
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png"
-            className="object-cover lg:ml-48 ml-32 w-20  rounded-full"
+            className="object-cover lg:ml-48 ml-16 w-20  rounded-full"
           />
           <form className="max-w-lg">
             <div className="flex flex-wrap -mx-3 gap-y-2">

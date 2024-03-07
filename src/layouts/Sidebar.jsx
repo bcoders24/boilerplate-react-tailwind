@@ -3,18 +3,20 @@ import { NavLink } from "react-router-dom";
 import { links } from "./Header";
 import bCoderLogo from "../assets/bCoderLogo.png";
 function Sidebar() {
-  const [expanded, setExpanded] = useState(true);
 
-  const toggleSidebar = () => {
-    setExpanded((prev) => !prev);
-  };
+
+  const [expanded,setExpanded] = useState(true);
+
+  const toggleSidebar =()=>{
+   setExpanded((prev) => !prev);
+  }
 
   return (
     <div className="flex-1 hidden md:flex">
       <div
-        className={`h-screen transition-all duration-700 p-1 ${
-          expanded ? "w-56" : "w-20"
-        }`}
+     className={`h-screen transition-all duration-700 p-1 ${
+        expanded ? "w-56" :"w-20"
+     }`}
       >
         <div className="w-full relative top-0 left-0 px-5 h-full bg-gray-900 py-4 flex flex-col justify-between rounded-md md:rounded-3xl">
           <div className="absolute -right-5 top-3 p-2">

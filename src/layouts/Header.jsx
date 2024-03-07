@@ -129,13 +129,13 @@ function Header({ title }) {
   // Phone Menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev)=> !prev);
   };
 
-  const handleLogout = () => {
+  const handleLogout = ()=>{
     localStorage.removeItem("token");
     navigate("/");
-  };
+  }
 
   return (
     <div className="flex items-center justify-between py-4 px-2">
@@ -208,7 +208,7 @@ function Header({ title }) {
               fontWeight="600"
             >
               <tspan x="-1" y="0">
-                2
+               1
               </tspan>
             </text>
           </g>
@@ -262,7 +262,7 @@ function Header({ title }) {
   );
 }
 export default Header;
-
+//this is open only button click
 const MenuDrawer = ({ toggleMenu }) => {
   return (
     <div className="bg-slate-700 w-full p-4 pb-6 absolute top-0 left-0">
