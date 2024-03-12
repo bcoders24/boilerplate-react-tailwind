@@ -1,17 +1,11 @@
 import axios from "axios";
 
-const getToken = () => {
-  const token = localStorage.getItem("token")
-    ? localStorage.getItem("token")
-    : "";
-  return token;
-};
-
 const instance = axios.create({
-  baseURL: "https://hrms.bcodercastle.com/api",
+  baseURL: "https://api.openai.com/v1",
   headers: {
     "Content-Type": "application/json",
-    "x-access-token": getToken(),
+    Authorization: "Bearer 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",
   },
 });
+
 export default instance;

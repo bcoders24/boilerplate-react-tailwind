@@ -2,8 +2,8 @@ import React from "react";
 
 function Stepper({ activeStep }) {
   return (
-    <div className="bg-gray-200  lg:w-60 md:w-32 w-28 pt-5 rounded-md">
-      <h3 className="flex items-start justify-start text-sm font-poppins ml-1 font-semibold truncate">
+    <div className="bg-gray-200  lg:w-60 md:w-32 w-28 mt-5 pt-3 rounded-md">
+      <h3 className="flex items-start justify-start text-sm font-poppins ml-2  font-semibold truncate ">
         Add Employee
       </h3>
       <div className="bg-white mt-3 py-4  lg:h-full  h-full md:h-1/2  flex items-start rounded-b-md justify-between lg:w-60 md:w-32 w-28 pt-5">
@@ -117,7 +117,7 @@ function Stepper({ activeStep }) {
               <div className="flex flex-col items-start">
                 <span
                   className={`text-[10px]  hidden md:flex leading-tight ${
-                    activeStep === 3 ? "text-yellow-400" : "text-gray-200"
+                    activeStep === 4 ? "text-yellow-400" : "text-gray-200"
                   }`}
                 >
                   Step two

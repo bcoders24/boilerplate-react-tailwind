@@ -1,13 +1,9 @@
 import React from 'react'
 
-function StepThree({setStep}) {
+function StepThree() {
   return (
     <div>
-       <div className="h-full">
-      <div className="flex justify-center sm:h-auto md:h-full">
-        Step Three
-      </div>
-    </div>
+      <h3>HELLO</h3>
     </div>
   )
 }

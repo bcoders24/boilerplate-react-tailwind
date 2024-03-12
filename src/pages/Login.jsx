@@ -36,6 +36,7 @@ function Login() {
       if (response?.data?.isSuccess) {
         toast.success("Login successful");
         localStorage.setItem("token", response?.data?.data?.session?.token);
+        console.log(response)
         navigate("/dashboard");
       } else {
         toast.error(response?.data?.message);
