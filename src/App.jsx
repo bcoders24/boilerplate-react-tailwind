@@ -1,17 +1,12 @@
-import { Fragment } from "react";
-import Router from "./Router";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "@szhsin/react-menu/dist/index.css";
-import "@szhsin/react-menu/dist/transitions/slide.css";
+import React from "react";
 
+import Layout from "./layouts/Layout";
 
 function App() {
   return (
-    <Fragment>
- <ToastContainer/>
- <Router/>
-    </Fragment>
+        <>
+    <Layout/>
+        </>
   );
 }
 export default App;

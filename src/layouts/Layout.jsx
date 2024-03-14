@@ -1,11 +1,13 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-
-function Layout({ children }) {
+import Chat from "./Chat";
+function Layout() {
   return (
-    <div className="h-screen w-full flex">
+    <div className="h-screen  w-full flex">
       <Sidebar />
-      <div className="w-full h-full flex flex-col">{children}</div>
+      <div className="w-full h-full flex flex-col">
+        <Chat/>
+      </div>
     </div>
   );
 }

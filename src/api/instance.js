@@ -3,9 +3,10 @@ import axios from "axios";
 const instance = axios.create({
   baseURL: "https://api.openai.com/v1",
   headers: {
-    "Content-Type": "application/json",
-    Authorization: "Bearer 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",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer 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' 
   },
 });
 
 export default instance;
+
