@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
-
+import StepThree from "./StepThree";
 import Header from "../../layouts/Header";
 import Stepper from "../../components/Stepper";
 
@@ -19,6 +19,7 @@ const AddEmployeeForm = () => {
           {formData.step === 1 && <StepOne setFormData={setFormData} />}
           {formData.step === 2 && <StepTwo setFormData={setFormData} />}
           {formData.step === 3 && <StepThree setFormData={setFormData} />}
+          
         </div>
         <div className="h-full w-4/12 bg-gray-100 rounded-e-md py-8 p-3">
           <Stepper activeStep={formData.step} />

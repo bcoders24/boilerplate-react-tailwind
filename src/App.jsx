@@ -8,8 +8,8 @@ import "@szhsin/react-menu/dist/transitions/slide.css";
 function App() {
   return (
     <Fragment>
-      <ToastContainer />
-      <Router />
+   <ToastContainer/>
+   <Router/>
     </Fragment>
   );
 }

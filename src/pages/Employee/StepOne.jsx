@@ -9,7 +9,7 @@ const validateForm = (data) => {
     errors.fullName = "FullName is required";
   }
   if (!data.contactNumber.trim()) {
-    errors.contactNumber = "Contact Num is required";
+    errors.contactNumber = "Contact is required";
   }
   if (!data.startDate) {
     errors.startDate = "Date is required";
